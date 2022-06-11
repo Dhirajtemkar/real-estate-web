@@ -1,12 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Footer from "./component/Footer/Footer";
+import Nav from "./component/Nav/Nav";
+import { navObject } from "./component/Nav/NavObject";
 
 function App() {
   return (
-    <div className="App">
-      <h2>Dhiraj Temkar</h2>
-      <div>We will try to make a website!</div>
-    </div>
+    <Router>
+      <div className="App">
+        <Nav />
+        <Routes>
+          {
+            navObject.map(e => (
+              <Route path={e.path} element={e.element} />
+            ))
+          }
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
